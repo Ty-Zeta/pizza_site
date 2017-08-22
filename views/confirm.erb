@@ -4,17 +4,21 @@
         <input type = "radio" name = "sauce_radio" value = "yes"> Yes
         <input type = "radio" name = "sauce_radio" value = "no"> No </p>
      <% end %>
-
+    
+    <% meat_count = 0 %>
      <% meat.each do |meat_value| %>
         <p> <%= meat_value %>
-        <input type = "radio" name = "meat_radio" value = "yes"> Yes
-        <input type = "radio" name = "meat_radio" value = "no"> No </p>
+        <input type = "radio" name = "meat_radio<%= meat_count.to_s %>" value = "yes"> Yes
+        <input type = "radio" name = "meat_radio<%= meat_count.to_s %>" value = "no"> No </p>
+        <% meat_count += 1%>
     <% end %>
 
+    <% veg_count = 0 %>
     <% veg.each do |veg_value| %>
         <p> <%= veg_value %>
-        <input type = "radio" name = "veg_radio" value = "yes"> Yes
-        <input type = "radio" name = "veg_radio" value = "no"> No </p>
+        <input type = "radio" name = "veg_radio<%= veg_count.to_s %>" value = "yes"> Yes
+        <input type = "radio" name = "veg_radio<%= veg_count.to_s %>" value = "no"> No </p>
+        <% veg_count += 1%>
     <% end %>
 
     <input type = "submit">
