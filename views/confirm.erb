@@ -1,0 +1,21 @@
+<form method = "post" action = "/confirm">
+    <% sauce.each do |sauce_value| %>
+        <p> <%= sauce_value %>
+        <input type = "radio" name = "sauce_radio" value = "yes"> Yes
+        <input type = "radio" name = "sauce_radio" value = "no"> No </p>
+     <% end %>
+
+     <% meat.each do |meat_value| %>
+        <p> <%= meat_value %>
+        <input type = "radio" name = "meat_radio" value = "yes"> Yes
+        <input type = "radio" name = "meat_radio" value = "no"> No </p>
+    <% end %>
+
+    <% veg.each do |veg_value| %>
+        <p> <%= veg_value %>
+        <input type = "radio" name = "veg_radio" value = "yes"> Yes
+        <input type = "radio" name = "veg_radio" value = "no"> No </p>
+    <% end %>
+
+    <input type = "submit">
+</form>
