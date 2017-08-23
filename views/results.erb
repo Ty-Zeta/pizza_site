@@ -1,13 +1,13 @@
 Your pizza will have
 
 <% sauce_final.each do |sauce_value| %>
-    <p> <%= sauce_value %> </p>
+    <p> <%= sauce_value.shift %> </p>
 <% end %>
 
 <% meat_final.each do |meat_value| %>
-    <p> <%= meat_value %> </p>
+    <p> <%= meat_value.shift %> </p>
 <% end %>
 
 <% veg_final.each do |veg_value| %>
-    <p> <%= veg_value %> </p>
+    <p> <%= veg_value.shift %> </p>
 <% end %>
