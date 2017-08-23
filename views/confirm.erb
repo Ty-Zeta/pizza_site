@@ -1,18 +1,21 @@
 <form method = "post" action = "/confirm">
     <% sauce.each do |sauce_value| %>
         <p> <%= sauce_value %>
+        <img src = "./img/<%= sauce_value %>.png">
         <input type = "radio" name = "sauce_radio[<%= sauce_value %>]" value = "sauce_value" checked> Yes
         <input type = "radio" name = "sauce_radio[<%= sauce_value %>]" value = "sauce_value"> No </p>
     <% end %>
     
     <% meat.each do |meat_value| %>
         <p> <%= meat_value %>
+        <img src = "./img/<%= meat_value %>.png">
         <input type = "radio" name = "meat_radio[<%= meat_value %>]" value = "meat_value" checked> Yes
         <input type = "radio" name = "meat_radio[<%= meat_value %>]" value = "meat_value"> No </p>
     <% end %>
 
     <% veg.each do |veg_value| %>
         <p> <%= veg_value %>
+        <img src = "./img/<%= veg_value %>.png">
         <input type = "radio" name = "veg_radio[<%= veg_value %>]" value = "veg_value"checked> Yes
         <input type = "radio" name = "veg_radio[<%= veg_value %>]" value = "veg_value"> No </p>
     <% end %>
