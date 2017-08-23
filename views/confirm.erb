@@ -1,23 +1,23 @@
 <form method = "post" action = "/confirm">
     <% sauce.each do |sauce_value| %>
         <p> <%= sauce_value %>
-        <input type = "radio" name = "sauce_radio" value = "sauce_yes"> Yes
-        <input type = "radio" name = "sauce_radio" value = "sauce_no"> No </p>
-     <% end %>
+        <input type = "radio" name = "sauce_radio[]" value = "sauce_value"> Yes
+        <input type = "radio" name = "sauce_radio[]" value = "sauce_value"> No </p>
+    <% end %>
     
     <% meat_count = 0 %>
      <% meat.each do |meat_value| %>
         <p> <%= meat_value %>
-        <input type = "radio" name = "meat_radio<%= meat_count.to_s %>" value = "meat_yes"> Yes
-        <input type = "radio" name = "meat_radio<%= meat_count.to_s %>" value = "meat_no"> No </p>
+        <input type = "radio" name = "meat_radio[] <%= meat_count.to_s %>" value = "meat_value"> Yes
+        <input type = "radio" name = "meat_radio[] <%= meat_count.to_s %>" value = "meat_value"> No </p>
         <% meat_count += 1%>
     <% end %>
 
     <% veg_count = 0 %>
     <% veg.each do |veg_value| %>
         <p> <%= veg_value %>
-        <input type = "radio" name = "veg_radio<%= veg_count.to_s %>" value = "veg_yes"> Yes
-        <input type = "radio" name = "veg_radio<%= veg_count.to_s %>" value = "veg_no"> No </p>
+        <input type = "radio" name = "veg_radio[] <%= veg_count.to_s %>" value = "veg_value"> Yes
+        <input type = "radio" name = "veg_radio[] <%= veg_count.to_s %>" value = "veg_value"> No </p>
         <% veg_count += 1%>
     <% end %>
 

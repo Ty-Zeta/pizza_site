@@ -17,13 +17,12 @@ get '/confirm' do
 end
 
 post '/confirm' do
-    session[:sauce_choice] = params[:sauce_yes] 
-    session[:meat_choice] = params[:meat_yes]
-    session[:veg_choice] = params[:veg_yes]
-    p "#{veg_choice} HEY DUMMY!!!"
+    session[:sauce_choice] = params[:sauce_radio] 
+    session[:meat_choice] = params[:meat_radio]
+    session[:veg_choice] = params[:veg_radio]
     redirect '/results'
 end
 
 get '/results' do
-    erb :results, locals: {sauce_yes: session[:sauce_choice], meat_yes: session[:meat_choice], veg_yes: session[:veg_choice]}
+    erb :results, locals: {sauce_final: session[:sauce_choice], meat_final: session[:meat_choice], veg_final: session[:veg_choice]}
 end
