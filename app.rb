@@ -7,7 +7,7 @@ end
 
 post '/delivery' do
     session[:del_choice] = params[:delivery]
-    if :del_choice == "no_del"
+    if session[:del_choice] == "no_del"
         redirect '/index'
     elsif 
         redirect '/address'
