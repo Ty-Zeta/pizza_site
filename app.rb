@@ -2,7 +2,25 @@ require 'sinatra'
 enable :sessions
 
 get '/' do
-    erb :index
+    erb :del
+end
+
+post '/delivery' do
+    session[:del_choice] = params[:yes_del]
+    redirect '/address'
+end
+
+get '/address' do
+    erb :address, locals: {yes_del: session[:del_choice]}
+end
+
+post '/address' do
+    session[:del_address] = params[:take_pizza_here]
+    redirect '/index'
+end
+
+get '/index' do
+    erb :index, locals: {take_pizza_here: session[:del_address]}
 end
 
 post '/choosing' do
