@@ -1,4 +1,10 @@
 <form method = "post" action = "/confirm">
+    <% size.each do |size_value| %>
+        <p> <%= size_value %>
+        <input type = "radio" name = "size_radio[<%= size_value %>]" value = "<%= size_value %>" checked> Yes
+        <input type = "radio" name = "size_radio[<%= size_value %>]" value = "no"> No </p>
+    <% end %>
+
     <% sauce.each do |sauce_value| %>
         <p> <%= sauce_value %>
         <img src = "./img/<%= sauce_value %>.png">

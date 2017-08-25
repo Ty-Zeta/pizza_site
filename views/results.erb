@@ -2,6 +2,11 @@ Alright, so we're sending the pizza to <%= take_pizza_here %>
 
 Your pizza will have
 
+<% size_final.each do |size_value| %>
+    <% size_value = size_value.shift%>
+    <p> <%= size_value %> </p>
+<% end %>
+
 <% sauce_final.each do |sauce_value| %>
     <% sauce_value = sauce_value.shift%>
     <p> <%= sauce_value %> </p>
