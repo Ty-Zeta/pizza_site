@@ -6,8 +6,12 @@ get '/' do
 end
 
 post '/delivery' do
-    session[:del_choice] = params[:yes_del]
-    redirect '/address'
+    session[:del_choice] = params[:delivery]
+    if :del_choice == "no_del"
+        redirect '/index'
+    elsif 
+        redirect '/address'
+    end
 end
 
 get '/address' do
@@ -32,14 +36,13 @@ post '/choosing' do
 end
 
 get '/confirm' do
-    erb :confirm, locals: {sauce: session[:sauce_type], meat: session[:meat_type], veg: session[:veg_type], take_pizza_here: session[:del_address]}
+    erb :confirm, locals: {sauce: session[:sauce_type], meat: session[:meat_type], veg: session[:veg_type]}
 end
 
 post '/confirm' do
     session[:sauce_choice] = params[:sauce_radio] 
     session[:meat_choice] = params[:meat_radio]
     session[:veg_choice] = params[:veg_radio]
-    session[:del_address] = params[:take_pizza_here]
     redirect '/results'
 end
 

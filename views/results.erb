@@ -8,14 +8,16 @@ Your pizza will have
     <img src = "./img/<%= sauce_value %>.png">
 <% end %>
 
-<% meat_final.each do |meat_value| %>
-    <% meat_value = meat_value.shift %>
-    <p> <%= meat_value %> </p>
-    <img src = "./img/<%= meat_value %>.png">
+<% meat_final.each do |meat_value, key| %>
+   <% if meat_value == key %>
+        <p> <%= meat_value %> </p>
+        <img src = "./img/<%= meat_value %>.png">
+        <% end %>
 <% end %>
 
-<% veg_final.each do |veg_value| %>
-    <% veg_value = veg_value.shift%>
-    <p> <%= veg_value %> </p>
-    <img src = "./img/<%= veg_value %>.png">
+<% veg_final.each do |veg_value, key| %>
+    <% if veg_value == key %>
+        <p> <%= veg_value %> </p>
+        <img src = "./img/<%= veg_value %>.png">
+    <% end %>
 <% end %>
