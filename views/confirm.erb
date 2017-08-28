@@ -1,8 +1,18 @@
 <form method = "post" action = "/confirm">
+    
+    <% total = 0 %>   
     <% size.each do |size_value| %>
         <p> <%= size_value %>
         <input type = "radio" name = "size_radio[<%= size_value %>]" value = "<%= size_value %>" checked> Yes
         <input type = "radio" name = "size_radio[<%= size_value %>]" value = "no"> No </p>
+        
+            <% if size_value == "small" %>
+                <% total += 5 %>
+            <% elsif size_value == "medium" %>
+                <% total += 7 %>
+            <% else size_value == "large" %>
+                <% total += 9 %>
+            <% end %>
     <% end %>
 
     <% sauce.each do |sauce_value| %>
@@ -10,6 +20,7 @@
         <img src = "./img/<%= sauce_value %>.png">
         <input type = "radio" name = "sauce_radio[<%= sauce_value %>]" value = "<%= sauce_value %>" checked> Yes
         <input type = "radio" name = "sauce_radio[<%= sauce_value %>]" value = "no"> No </p>
+            <% total +=1 %>
     <% end %>
     
     <% meat.each do |meat_value| %>
@@ -17,6 +28,7 @@
         <img src = "./img/<%= meat_value %>.png">
         <input type = "radio" name = "meat_radio[<%= meat_value %>]" value = "<%= meat_value %>" checked> Yes
         <input type = "radio" name = "meat_radio[<%= meat_value %>]" value = "no"> No </p>
+            <% total +=1 %>
     <% end %>
 
     <% veg.each do |veg_value| %>
@@ -24,10 +36,9 @@
         <img src = "./img/<%= veg_value %>.png">
         <input type = "radio" name = "veg_radio[<%= veg_value %>]" value = "<%= veg_value %>"checked> Yes
         <input type = "radio" name = "veg_radio[<%= veg_value %>]" value = "no"> No </p>
+            <% total +=1 %>
     <% end %>
 
-    Would you like to add another pizza?
-    <button type = "button"> <a href = "/index" </a> Click here to add a pizza </button>
-
+Your total is is $<%= total %>
     <input type = "submit" value = "Continue to Final Order">
 </form>
