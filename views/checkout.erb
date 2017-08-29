@@ -1,4 +1,7 @@
 Your total price is <%= total_price %>
 
-and your pizzas are <%= final_pizzas %>
+and your pizzas are
+ <% final_pizzas.each do |pizza_value| %>
+    <p> <%= pizza_value.split(', ').join(', ') %> </p>
 
+<% end %>

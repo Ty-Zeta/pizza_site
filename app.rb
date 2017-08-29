@@ -60,7 +60,6 @@ post '/results' do
     current_pizza_array = params[:pizza_array]
     session[:all_the_pizzas] = session[:all_the_pizzas] || []
     session[:all_the_pizzas] << current_pizza_array
-    #p "all pizzas are #{current_pizza_array}"
     if direction == "no"
         redirect '/checkout'
     else
