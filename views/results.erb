@@ -1,22 +1,29 @@
+<form method = "post" action = "/results">
+
 Alright, so we're sending the pizza to <%= take_pizza_here %>
 
 Your pizza will have
 
+<% pizza_array = [] %>
+
 <% size_final.each do |size_value| %>
     <% size_value = size_value.shift%>
     <p> <%= size_value %> </p>
+    <% pizza_array << size_value %>
 <% end %>
 
 <% sauce_final.each do |sauce_value| %>
     <% sauce_value = sauce_value.shift%>
     <p> <%= sauce_value %> </p>
     <img src = "./img/<%= sauce_value %>.png">
+    <% pizza_array << sauce_value %>
 <% end %>
 
 <% meat_final.each do |meat_value, key| %>
    <% if meat_value == key %>
         <p> <%= meat_value %> </p>
         <img src = "./img/<%= meat_value %>.png">
+        <% pizza_array << meat_value %>
         <% end %>
 <% end %>
 
@@ -24,10 +31,19 @@ Your pizza will have
     <% if veg_value == key %>
         <p> <%= veg_value %> </p>
         <img src = "./img/<%= veg_value %>.png">
+        <% pizza_array << veg_value %>
     <% end %>
 <% end %>
 
 The total cost is $ <%= total_final %>
 
-    Would you like to add another pizza?
-    <button type = "button"> <a href = "/index" </a> Click here to add a pizza </button>
+<%= pizza_array %>
+
+Would you like to add another pizza or check out?
+    <input type = "radio" name = "add_checkout" value = "yes"> Click here to add a pizza
+    <input type = "radio" name = "add_checkout" value = "no"> Go to checkout
+    <input type = "hidden" name = "pizza_array" value = <%= pizza_array %>>
+    <input type = "submit">
+
+</form>
+

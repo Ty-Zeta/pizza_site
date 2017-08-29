@@ -46,14 +46,28 @@ post '/confirm' do
     session[:meat_choice] = params[:meat_radio]
     session[:veg_choice] = params[:veg_radio]
     current_pizza = params[:total].to_i || 0
-   session[:total] = session[:total] || 0
-    p "your total is #{session[:total]}"
+    session[:total] = session[:total] || 0
     session[:total] = session[:total] + current_pizza
-    p "Your current_pizza is #{session[:total]}"
-
     redirect '/results'
 end
 
 get '/results' do
     erb :results, locals: {sauce_final: session[:sauce_choice], meat_final: session[:meat_choice], veg_final: session[:veg_choice], take_pizza_here: session[:del_address], size_final: session[:pizza_choice], total_final: session[:total]}
+end
+
+post '/results' do
+    direction = params[:add_checkout]
+    current_pizza_array = params[:pizza_array]
+    session[:all_the_pizzas] = session[:all_the_pizzas] || []
+    session[:all_the_pizzas] << current_pizza_array
+    #p "all pizzas are #{current_pizza_array}"
+    if direction == "no"
+        redirect '/checkout'
+    else
+        redirect '/index'
+    end
+end
+
+get '/checkout' do
+    erb :checkout, locals: {total_price: session[:total], final_pizzas: session[:all_the_pizzas]}
 end
