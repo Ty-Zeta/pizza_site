@@ -45,9 +45,15 @@ post '/confirm' do
     session[:sauce_choice] = params[:sauce_radio] 
     session[:meat_choice] = params[:meat_radio]
     session[:veg_choice] = params[:veg_radio]
+    current_pizza = params[:total].to_i || 0
+   session[:total] = session[:total] || 0
+    p "your total is #{session[:total]}"
+    session[:total] = session[:total] + current_pizza
+    p "Your current_pizza is #{session[:total]}"
+
     redirect '/results'
 end
 
 get '/results' do
-    erb :results, locals: {sauce_final: session[:sauce_choice], meat_final: session[:meat_choice], veg_final: session[:veg_choice], take_pizza_here: session[:del_address], size_final: session[:pizza_choice]}
+    erb :results, locals: {sauce_final: session[:sauce_choice], meat_final: session[:meat_choice], veg_final: session[:veg_choice], take_pizza_here: session[:del_address], size_final: session[:pizza_choice], total_final: session[:total]}
 end
